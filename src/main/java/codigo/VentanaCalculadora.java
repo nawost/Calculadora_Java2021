@@ -43,7 +43,11 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         botonsuma = new javax.swing.JButton();
         botonresta = new javax.swing.JButton();
         botonmulti = new javax.swing.JButton();
-        botondivision1 = new javax.swing.JButton();
+        botonigual = new javax.swing.JButton();
+        botonreseteo = new javax.swing.JButton();
+        botonraizcuadrada = new javax.swing.JButton();
+        botonelevado = new javax.swing.JButton();
+        botoncoma = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -146,7 +150,7 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         });
         getContentPane().add(boton00, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 320, 60, 64));
 
-        botondivision.setText("/");
+        botondivision.setText("÷");
         botondivision.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botondivisionActionPerformed(evt);
@@ -170,7 +174,7 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         });
         getContentPane().add(botonresta, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 167, 64, 64));
 
-        botonmulti.setText("*");
+        botonmulti.setText("X");
         botonmulti.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonmultiActionPerformed(evt);
@@ -178,13 +182,46 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         });
         getContentPane().add(botonmulti, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 249, 64, 64));
 
-        botondivision1.setText("=");
-        botondivision1.addActionListener(new java.awt.event.ActionListener() {
+        botonigual.setBackground(new java.awt.Color(153, 153, 255));
+        botonigual.setText("=");
+        botonigual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botondivision1ActionPerformed(evt);
+                botonigualActionPerformed(evt);
             }
         });
-        getContentPane().add(botondivision1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 150, 64));
+        getContentPane().add(botonigual, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 150, 64));
+
+        botonreseteo.setText("C");
+        botonreseteo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonreseteoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonreseteo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 87, 64, 64));
+
+        botonraizcuadrada.setText("√");
+        botonraizcuadrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonraizcuadradaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonraizcuadrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 64, 64));
+
+        botonelevado.setText("x²");
+        botonelevado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonelevadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonelevado, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 167, 64, 64));
+
+        botoncoma.setBackground(new java.awt.Color(0, 0, 0));
+        botoncoma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botoncomaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botoncoma, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, 64, 64));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -280,7 +317,12 @@ public class VentanaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_boton00ActionPerformed
 
     private void botondivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botondivisionActionPerformed
-        // TODO add your handling code here:
+          operacion = "/";
+        //Double.valueof convierte un string
+        //en su equivalente numerico
+        operando1 = Double.valueOf(display.getText());
+        //reseteo la pantalla
+        display.setText("0");
     }//GEN-LAST:event_botondivisionActionPerformed
 
     private void botonsumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonsumaActionPerformed
@@ -294,21 +336,61 @@ public class VentanaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_botonsumaActionPerformed
 
     private void botonrestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonrestaActionPerformed
-        // TODO add your handling code here:
+          operacion = "-";
+        //Double.valueof convierte un string
+        //en su equivalente numerico
+        operando1 = Double.valueOf(display.getText());
+        //reseteo la pantalla
+        display.setText("0");
     }//GEN-LAST:event_botonrestaActionPerformed
 
     private void botonmultiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonmultiActionPerformed
-        // TODO add your handling code here:
+         operacion = "*";
+        //Double.valueof convierte un string
+        //en su equivalente numerico
+        operando1 = Double.valueOf(display.getText());
+        //reseteo la pantalla
+        display.setText("0");
     }//GEN-LAST:event_botonmultiActionPerformed
 
-    private void botondivision1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botondivision1ActionPerformed
+    private void botonigualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonigualActionPerformed
         double operando2 = Double.valueOf(display.getText());
         if (operacion.equals("+")){
             operando1 = operando1 + operando2;
         }
-        
+        if (operacion.equals("-")){
+            operando1 = operando1 - operando2;
+        }
+        if (operacion.equals("*")){
+            operando1 = operando1  * operando2;
+        }
+        if (operacion.equals("/")){
+            operando1 = operando1 / operando2;
+        }
         display.setText("" + operando1);
-    }//GEN-LAST:event_botondivision1ActionPerformed
+    }//GEN-LAST:event_botonigualActionPerformed
+
+    private void botonreseteoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonreseteoActionPerformed
+        display.setText("0");
+    }//GEN-LAST:event_botonreseteoActionPerformed
+
+    private void botonraizcuadradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonraizcuadradaActionPerformed
+        double operando2 = Double.valueOf(display.getText());
+            operando1 = Math.sqrt(operando2);
+            
+       display.setText(String.valueOf(operando1));
+    }//GEN-LAST:event_botonraizcuadradaActionPerformed
+
+    private void botonelevadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonelevadoActionPerformed
+        double operando2 = Double.valueOf(display.getText());
+        operando1 = Math.pow(operando2, 2);
+        
+        display.setText(String.valueOf(operando1));
+    }//GEN-LAST:event_botonelevadoActionPerformed
+
+    private void botoncomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoncomaActionPerformed
+           display.setText("Hola Jorge :)");
+    }//GEN-LAST:event_botoncomaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -356,9 +438,13 @@ public class VentanaCalculadora extends javax.swing.JFrame {
     private javax.swing.JButton boton07;
     private javax.swing.JButton boton08;
     private javax.swing.JButton boton09;
+    private javax.swing.JButton botoncoma;
     private javax.swing.JButton botondivision;
-    private javax.swing.JButton botondivision1;
+    private javax.swing.JButton botonelevado;
+    private javax.swing.JButton botonigual;
     private javax.swing.JButton botonmulti;
+    private javax.swing.JButton botonraizcuadrada;
+    private javax.swing.JButton botonreseteo;
     private javax.swing.JButton botonresta;
     private javax.swing.JButton botonsuma;
     private javax.swing.JLabel display;
